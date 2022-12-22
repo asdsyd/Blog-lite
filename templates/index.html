@@ -1,20 +1,23 @@
-<h1>Hello World</h1>
-<p>this is my first web page site</p>
+{% extends 'base.html' %}
 
-<p>heyyyyyyyyy</p>
-<p>My name is {{first_name|upper}}</p>
-<p> {{stuff|trim}}</p>
+{% block content %}
+    <h1>Hello World</h1>
+    <p>this is my first web page site</p>
 
-<h2>Making flask blog lite appp!!!!</h2>
-<h3>Favorite Pizza</h3>
+    <p>heyyyyyyyyy</p>
+    <p>My name is {{first_name|upper}}</p>
+    <p> {{stuff|trim}}</p>
 
-{% for topping in favorite_pizza %}
-    {% if topping == 777  %}
-        {{topping + 333 }}
-    {% else %}
-        {{topping}}<br>
-    {% endif %}
-{% endfor %}
+    <h2>Making flask blog lite appp!!!!</h2>
+    <h3>Favorite Pizza</h3>
 
-<br/><br/>
-{{favorite_pizza | reverse}}
+    {% for topping in favorite_pizza %}
+        {% if topping == 777  %}
+            {{topping + 333 }}
+        {% else %}
+            {{topping}}<br>
+        {% endif %}
+    {% endfor %}
+
+    <br/><br/>
+{% endblock %}

@@ -1,4 +1,7 @@
 from flask import Flask, render_template
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField
+from wtforms.validators import DataRequired
 
 # Create a Flask instance
 app = Flask(__name__)
@@ -46,3 +49,5 @@ def page_not_found(e):
 @app.errorhandler(500)
 def page_not_found(e):
     return render_template("500.html"),500
+
+#Create a Form Class
