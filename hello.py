@@ -5,6 +5,16 @@ from wtforms.validators import DataRequired
 
 # Create a Flask instance
 app = Flask(__name__)
+app.config['SECRET_KEY'] = "haha super secret key you dont know"
+
+#Create a Form Class
+class NameForm(FlaskForm):
+    name = StringField("Enter your Name", validators=[DataRequired()])
+    submit = SubmitField()
+
+    # BooleanField
+    # DataField
+    # and so on...
 
 # Create a route decorator
 @app.route('/')
@@ -50,4 +60,15 @@ def page_not_found(e):
 def page_not_found(e):
     return render_template("500.html"),500
 
-#Create a Form Class
+#Create Name page
+@app.route('/name', methods=['GET', 'POST'])
+def name():
+    name = None
+    form = NameForm()
+    #Validate Form
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+    return render_template("name.html",
+                           name = name,
+                           form = form)
